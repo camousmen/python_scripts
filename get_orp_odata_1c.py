@@ -28,6 +28,8 @@ STORE_EXCEL_DICT = {
     'Магазин №10': 'маг10_1с'
 }
 
+XSLX_FILE = "НовыйДокументКасса.xlsx"
+
 
 def date_to_russia(date_string):
     """Перевод даты на русский"""
@@ -120,7 +122,7 @@ for day in range(1, cur_day_number+1):
 
 
 # запись полученных значений в эксель файл 
-wb = load_workbook('test_excel.xlsx')
+wb = load_workbook(XSLX_FILE)
 
 #В случае отсутствия листа нужно создать новый на основании шаблона
 #if cur_month not in wb.sheetnames:
@@ -143,5 +145,5 @@ for day in range(1, len(month_orp)+1):
                     sheet.cell(row=x+3, column=y).value = value['Сертификат']
                     sheet.cell(row=x+3, column=y).font = Font(color='008080')
 
-wb.save('text_output.xlsx')
+wb.save(XSLX_FILE)
 
